@@ -1,0 +1,125 @@
+p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+
+html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: rgb(255, 80, 77);
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+    }
+    .gwd-div-1ue4 {
+      position: absolute;
+      width: 139px;
+      height: 121px;
+      left: 423px;
+      top: 192px;
+      z-index: 999;
+    }
+    .gwd-div-1w6w {
+      width: 140px;
+      height: 140px;
+      left: 200px;
+      top: 0px;
+    }
+    .gwd-div-1128 {
+      width: 140px;
+      height: 140px;
+      left: 0px;
+      top: 170px;
+    }
+    .gwd-div-10zp {
+      width: 140px;
+      height: 140px;
+      left: 200px;
+      top: 170px;
+    }
+    .gwd-img-1jce {
+      display: block;
+      position: absolute;
+      opacity: 1;
+      left: 0px;
+      top: 0px;
+      width: 140px;
+      height: 140px;
+    }
+    .gwd-img-dgx3 {
+      display: block;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 140px;
+      width: 140px;
+    }
+    .gwd-div-i2zv {
+      width: 140px;
+      height: 140px;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-img-kzik {
+      display: block;
+      height: 140px;
+      position: absolute;
+      width: 140px;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-img-efcy {
+      display: block;
+      height: 140px;
+      position: absolute;
+      width: 140px;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-p-1app {
+      position: absolute;
+      height: 99px;
+      top: 0px;
+      color: rgb(255, 223, 89);
+      font-family: Bangers, sans-serif;
+      width: 583px;
+      transform-origin: 119.677px 70px 0px;
+      font-size: 128px;
+      left: 80px;
+    }
+    .gwd-div-1ep8 {
+      position: absolute;
+      height: 120px;
+      width: 660px;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-div-g244 {
+      position: absolute;
+      top: 44px;
+      width: 660px;
+      height: 458px;
+      left: 543px;
+    }
+    .gwd-div-e3si {
+      position: absolute;
+      top: 148px;
+      width: 340px;
+      height: 310px;
+      left: 160px;
+    }
+
+    .chevrone{
+      margin-top: 25px;
+      color: rgb(255, 223, 89);
+    }

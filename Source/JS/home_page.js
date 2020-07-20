@@ -27,6 +27,7 @@ function validateFunc(){
 		alert('You must select attacks for all rounds!')
 	}else{
 		JSONpostRegister(warriorObj.Name, warriorObj.WarriorType, warriorObj.Attacks);
+		window.location.href = '../HTML/fight.html';
 	}
 }
 
@@ -44,10 +45,44 @@ function validateFormAttack(attacks){
 	return 1;
 }
 
+function attackReroute(ids){
+	window.location.href = '../HTML/attacks.html';
+}
+
+function avatarSelection(){
+	var value = document.getElementById("avatarImage").getAttribute("value");
+	window.document.location = '../HTML/avatar_selection.html' + '?value=' + value;
+	//onloadAS();
+}
+
 function onloadFunc(){
-	var photo = document.getElementById("avatarImage").getAttribute("value");
-	changeAvatar(parseInt(photo, 10));
-	
+	var avatar;
+	let string = document.location.search.replace(/^.*?\=/, '');
+	if(string == ''){
+		avatar = Math.floor(Math.random() * Math.floor(5));
+	}else{
+		avatar = parseInt(string, 10);
+	}
+
+	if(avatar == 0){
+		document.getElementById("avatarImage").src = "../Images/avatar_dragon.svg";
+		document.getElementById("avatarImage").setAttribute("value", 0);
+	}else if(avatar == 1){
+		document.getElementById("avatarImage").src = "../Images/avatar_hackerman.svg";
+		document.getElementById("avatarImage").setAttribute("value", 1);
+	}else if(avatar == 2){
+		document.getElementById("avatarImage").src = "../Images/avatar_marvin.svg";
+		document.getElementById("avatarImage").setAttribute("value", 2);
+	}else if(avatar == 3){
+		document.getElementById("avatarImage").src = "../Images/avatar_tesla.svg";
+		document.getElementById("avatarImage").setAttribute("value", 3);
+	}else if(avatar == 4){
+		document.getElementById("avatarImage").src = "../Images/avatar_unicorn.svg";
+		document.getElementById("avatarImage").setAttribute("value", 4);
+	}else{
+		console.log("There has been an error!");
+	}
+
 	var warr = document.getElementById("avatarImage").getAttribute("src");
 	var warrName = document.getElementById('warriorName').value;
 	var attack0 = document.getElementById("attR0").getAttribute("value");
@@ -352,20 +387,7 @@ function attackSelect(warrType, attacks){
 	}
 }
 
-function changeAvatar(avatar){
-	if(avatar == 0){
-		document.getElementById("avatarImage").src = "../Images/avatar_dragon.svg";
-	}else if(avatar == 1){
-		document.getElementById("avatarImage").src = "../Images/avatar_hackerman.svg";
-	}else if(avatar == 2){
-		document.getElementById("avatarImage").src = "../Images/avatar_marvin.svg";
-	}else if(avatar == 3){
-		document.getElementById("avatarImage").src = "../Images/avatar_tesla.svg";
-	}else if(avatar == 4){
-		document.getElementById("avatarImage").src = "../Images/avatar_unicorn.svg";
-	}else{
-		console.log("There has been an error!");
-	}
+function chgAvt(avatar){
+	
 }
-
 /*I'm writing this so that function changeAvatar is safe and protected and doesn't feel lonely. Also I'm using multi line comment because I have mild ocd and this look prettier.*/
