@@ -5,7 +5,6 @@ function avatarSelected(id){
 
 function onloadAS(){
 	let string = document.location.search.replace(/^.*?\=/, '');
-	console.log(string);
 	var array = [0,1,2,3,4];
 	for(var i = 0; i < 5; i++){
 		if(parseInt(string, 10) == i){

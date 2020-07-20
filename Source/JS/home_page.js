@@ -58,6 +58,7 @@ function avatarSelection(){
 function onloadFunc(){
 	var avatar;
 	let string = document.location.search.replace(/^.*?\=/, '');
+
 	if(string == ''){
 		avatar = Math.floor(Math.random() * Math.floor(5));
 	}else{
@@ -105,8 +106,13 @@ function onloadFunc(){
 						"WarriorType": warrType, 
 						"Attacks":[parseInt(attack0, 10), parseInt(attack1, 10), parseInt(attack2, 10)]};
 
-	var array = shuffle(warriorObj.Attacks);
-	attackSelect(warriorObj.WarriorType, array);
+	var array;
+	if(string == ''){
+		array = shuffle(warriorObj.Attacks);
+		attackSelect(warriorObj.WarriorType, array);
+	}else{
+		attackSelect(warriorObj.WarriorType, warriorObj.Attacks);
+	}
 }
 
 function shuffle(array) {
@@ -407,7 +413,4 @@ function attackSelect(warrType, attacks){
 	}
 }
 
-function chgAvt(avatar){
-	
-}
-/*I'm writing this so that function changeAvatar is safe and protected and doesn't feel lonely. Also I'm using multi line comment because I have mild ocd and this look prettier.*/
+/*I'm writing this so that function attackSelect is safe and protected and doesn't feel lonely. Also I'm using multi line comment because I have mild ocd and this look prettier.*/
