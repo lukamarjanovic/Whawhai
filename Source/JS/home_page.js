@@ -27,7 +27,6 @@ function validateFunc(){
 		alert('You must select attacks for all rounds!')
 	}else{
 		JSONpostRegister(warriorObj.Name, warriorObj.WarriorType, warriorObj.Attacks);
-		window.location.href = '../HTML/fight.html';
 	}
 }
 
@@ -52,7 +51,6 @@ function attackReroute(ids){
 function avatarSelection(){
 	var value = document.getElementById("avatarImage").getAttribute("value");
 	window.document.location = '../HTML/avatar_selection.html' + '?value=' + value;
-	//onloadAS();
 }
 
 function onloadFunc(){
@@ -156,6 +154,7 @@ function JSONpostRegister(name, warriorType, attacks){
 			dataType : "json",
 			success : function(result) {
 				console.log(result)
+				window.location.href = '../HTML/fight.html';
 			},
 		});
 	}
