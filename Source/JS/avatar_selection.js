@@ -31,3 +31,8 @@ function onloadAS(){
 		} 
 	}
 }
+
+function backToHome(){
+	let string = document.location.search.replace(/^.*?\=/, '');
+	window.document.location = '../HTML/home_page.html' + '?value=' + string;
+}

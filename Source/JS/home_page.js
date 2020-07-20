@@ -109,7 +109,7 @@ function onloadFunc(){
 }
 
 function JSONpostRegister(name, warriorType, attacks){
-	var session_id = /SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;
+	var session_id = Math.floor(Math.random() * Math.floor(10));
 	var letsJSON = {
 				"jsonrpc" : "2.0",
 				"method" : "Register",
