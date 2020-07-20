@@ -1,0 +1,371 @@
+function validateFunc(){
+	var warrName = document.getElementById('warriorName').value;
+	var warr = document.getElementById("avatarImage").getAttribute("src");
+	var attack0 = document.getElementById("attR0").getAttribute("value");
+	var attack1 = document.getElementById("attR1").getAttribute("value");
+	var attack2 = document.getElementById("attR2").getAttribute("value");
+
+	if(warr == "../Images/avatar_dragon.svg"){
+		var warrType = 0;
+	}else if(warr == "../Images/avatar_hackerman.svg"){
+		var warrType = 1;
+	}else if(warr == "../Images/avatar_marvin.svg"){
+		var warrType = 2;
+	}else if(warr == "../Images/avatar_tesla.svg"){
+		var warrType = 3;
+	}else if(warr == "../Images/avatar_unicorn.svg"){
+		var warrType = 4;
+	}
+
+	const warriorObj = {"Name": warrName, 
+						"WarriorType": warrType, 
+						"Attacks":[parseInt(attack0, 10), parseInt(attack1, 10), parseInt(attack2, 10)]};
+
+	if(validateFormName(warriorObj.Name)== 0){
+		alert('You must enter a name for your warrior!');
+	}else if(validateFormAttack(warriorObj.Attacks) == 0){
+		alert('You must select attacks for all rounds!')
+	}else{
+		JSONpostRegister(warriorObj.Name, warriorObj.WarriorType, warriorObj.Attacks);
+	}
+}
+
+function validateFormName(warrName) {
+	if(warrName.length == 0){
+		return 0;
+	}
+	return 1;
+}
+
+function validateFormAttack(attacks){
+	if(attacks[0] == 3 || attacks[1] == 3 || attacks[2] == 3){
+		return 0;
+	}
+	return 1;
+}
+
+function onloadFunc(){
+	var photo = document.getElementById("avatarImage").getAttribute("value");
+	changeAvatar(parseInt(photo, 10));
+	
+	var warr = document.getElementById("avatarImage").getAttribute("src");
+	var warrName = document.getElementById('warriorName').value;
+	var attack0 = document.getElementById("attR0").getAttribute("value");
+	var attack1 = document.getElementById("attR1").getAttribute("value");
+	var attack2 = document.getElementById("attR2").getAttribute("value");
+
+	if(warr == "../Images/avatar_dragon.svg"){
+		var warrType = 0;
+	}else if(warr == "../Images/avatar_hackerman.svg"){
+		var warrType = 1;
+	}else if(warr == "../Images/avatar_marvin.svg"){
+		var warrType = 2;
+	}else if(warr == "../Images/avatar_tesla.svg"){
+		var warrType = 3;
+	}else if(warr == "../Images/avatar_unicorn.svg"){
+		var warrType = 4;
+	}
+
+	const warriorObj = {"Name": warrName, 
+						"WarriorType": warrType, 
+						"Attacks":[parseInt(attack0, 10), parseInt(attack1, 10), parseInt(attack2, 10)]};
+
+	attackSelect(warriorObj.WarriorType, warriorObj.Attacks);
+}
+
+function JSONpostRegister(name, warriorType, attacks){
+	var session_id = /SESS\w*ID=([^;]+)/i.test(document.cookie) ? RegExp.$1 : false;
+	var letsJSON = {
+				"jsonrpc" : "2.0",
+				"method" : "Register",
+				"id" : session_id,
+				"params":{
+					"Application":{
+						"Name": name,
+						"WarriorType": warriorType,
+						"Attacks": [attacks[0], attacks[1], attacks[2]]
+					}
+				}
+			};
+
+		$.ajax({
+			url : "https://recruitment-test.ants.house/jsonrpc2/whawhai/v1",
+			method : 'POST',
+			data: JSON.stringify(letsJSON),
+			dataType : "json",
+			success : function(result) {
+				console.log(result)
+			},
+		});
+	}
+
+function attackSelect(warrType, attacks){
+	if(warrType == 1){
+		switch(attacks[0]){
+			case 0:
+			document.getElementById("attR0").setAttribute("value", "0");
+			document.getElementById("attR0").innerHTML = "Cyber";
+			break;
+			case 1:
+			document.getElementById("attR0").setAttribute("value", "1");
+			document.getElementById("attR0").innerHTML = "System32 error";
+			break;
+			case 2:
+			document.getElementById("attR0").setAttribute("value", "2");
+			document.getElementById("attR0").innerHTML = "Norton Antivirus";
+			break;
+			case 3:
+			document.getElementById("attR0").innerHTML = "Attack for Round #1";
+		}
+		switch(attacks[1]){
+			case 0:
+			document.getElementById("attR1").setAttribute("value", "0");
+			document.getElementById("attR1").innerHTML = "Cyber";
+			break;
+			case 1:
+			document.getElementById("attR1").setAttribute("value", "1");
+			document.getElementById("attR1").innerHTML = "System32 error";
+			break;
+			case 2:
+			document.getElementById("attR1").setAttribute("value", "2");
+			document.getElementById("attR1").innerHTML = "Norton Antivirus";
+			break;
+			case 3:
+			document.getElementById("attR1").innerHTML = "Attack for Round #2";
+		}
+		switch(attacks[2]){
+			case 0:
+			document.getElementById("attR2").setAttribute("value", "0");
+			document.getElementById("attR2").innerHTML = "Cyber";
+			break;
+			case 1:
+			document.getElementById("attR2").setAttribute("value", "1");
+			document.getElementById("attR2").innerHTML = "System32 error";
+			break;
+			case 2:
+			document.getElementById("attR2").setAttribute("value", "2");
+			document.getElementById("attR2").innerHTML = "Norton Antivirus";
+			break;
+			case 3:
+			document.getElementById("attR2").innerHTML = "Attack for Round #3";
+		}
+	}
+	if(warrType == 2){
+		switch(attacks[0]){
+			case 0:
+			document.getElementById("attR0").setAttribute("value", "0");
+			document.getElementById("attR0").innerHTML = "Depression #1";
+			break;
+			case 1:
+			document.getElementById("attR0").setAttribute("value", "1");
+			document.getElementById("attR0").innerHTML = "Depression #2";
+			break;
+			case 2:
+			document.getElementById("attR0").setAttribute("value", "2");
+			document.getElementById("attR0").innerHTML = "Depression #3";
+			break;
+			case 3:
+			document.getElementById("attR0").innerHTML = "Attack for Round #1";
+		}
+		switch(attacks[1]){
+			case 0:
+			document.getElementById("attR1").setAttribute("value", "0");
+			document.getElementById("attR1").innerHTML = "Depression #1";
+			break;
+			case 1:
+			document.getElementById("attR1").setAttribute("value", "1");
+			document.getElementById("attR1").innerHTML = "Depression #2";
+			break;
+			case 2:
+			document.getElementById("attR1").setAttribute("value", "2");
+			document.getElementById("attR1").innerHTML = "Depression #3";
+			break;
+			case 3:
+			document.getElementById("attR1").innerHTML = "Attack for Round #2";
+		}
+		switch(attacks[2]){
+			case 0:
+			document.getElementById("attR2").setAttribute("value", "0");
+			document.getElementById("attR2").innerHTML = "Depression #1";
+			break;
+			case 1:
+			document.getElementById("attR2").setAttribute("value", "1");
+			document.getElementById("attR2").innerHTML = "Depression #2";
+			break;
+			case 2:
+			document.getElementById("attR2").setAttribute("value", "2");
+			document.getElementById("attR2").innerHTML = "Depression #3";
+			break;
+			case 3:
+			document.getElementById("attR2").innerHTML = "Attack for Round #3";
+		}
+	}
+	if(warrType == 0){
+		switch(attacks[0]){
+			case 0:
+			document.getElementById("attR0").setAttribute("value", "0");
+			document.getElementById("attR0").innerHTML = "Fire-Spitting";
+			break;
+			case 1:
+			document.getElementById("attR0").setAttribute("value", "1");
+			document.getElementById("attR0").innerHTML = "Dragon-Claw";
+			break;
+			case 2:
+			document.getElementById("attR0").setAttribute("value", "2");
+			document.getElementById("attR0").innerHTML = "Pound";
+			break;
+			case 3:
+			document.getElementById("attR0").innerHTML = "Attack for Round #1";
+		}
+		switch(attacks[1]){
+			case 0:
+			document.getElementById("attR1").setAttribute("value", "0");
+			document.getElementById("attR1").innerHTML = "Fire-Spitting";
+			break;
+			case 1:
+			document.getElementById("attR1").setAttribute("value", "1");
+			document.getElementById("attR1").innerHTML = "Dragon-Claw";
+			break;
+			case 2:
+			document.getElementById("attR1").setAttribute("value", "2");
+			document.getElementById("attR1").innerHTML = "Pound";
+			break;
+			case 3:
+			document.getElementById("attR1").innerHTML = "Attack for Round #2";
+		}
+		switch(attacks[2]){
+			case 0:
+			document.getElementById("attR2").setAttribute("value", "0");
+			document.getElementById("attR2").innerHTML = "Fire-Spitting";
+			break;
+			case 1:
+			document.getElementById("attR2").setAttribute("value", "1");
+			document.getElementById("attR2").innerHTML = "Dragon-Claw";
+			break;
+			case 2:
+			document.getElementById("attR2").setAttribute("value", "2");
+			document.getElementById("attR2").innerHTML = "Pound";
+			break;
+			case 3:
+			document.getElementById("attR2").innerHTML = "Attack for Round #3";
+		}
+	}
+	if(warrType == 3){
+		switch(attacks[0]){
+			case 0:
+			document.getElementById("attR0").setAttribute("value", "0");
+			document.getElementById("attR0").innerHTML = "Shaker-Machine";
+			break;
+			case 1:
+			document.getElementById("attR0").setAttribute("value", "1");
+			document.getElementById("attR0").innerHTML = "AC Voltage";
+			break;
+			case 2:
+			document.getElementById("attR0").setAttribute("value", "2");
+			document.getElementById("attR0").innerHTML = "Radio Waves";
+			break;
+			case 3:
+			document.getElementById("attR0").innerHTML = "Attack for Round #1";
+		}
+		switch(attacks[1]){
+			case 0:
+			document.getElementById("attR1").setAttribute("value", "0");
+			document.getElementById("attR1").innerHTML = "Shaker-Machine";
+			break;
+			case 1:
+			document.getElementById("attR1").setAttribute("value", "1");
+			document.getElementById("attR1").innerHTML = "AC Voltage";
+			break;
+			case 2:
+			document.getElementById("attR1").setAttribute("value", "2");
+			document.getElementById("attR1").innerHTML = "Radio Waves";
+			break;
+			case 3:
+			document.getElementById("attR1").innerHTML = "Attack for Round #2";
+		}
+		switch(attacks[2]){
+			case 0:
+			document.getElementById("attR2").setAttribute("value", "0");
+			document.getElementById("attR2").innerHTML = "Shaker-Machine";
+			break;
+			case 1:
+			document.getElementById("attR2").setAttribute("value", "1");
+			document.getElementById("attR2").innerHTML = "AC Voltage";
+			break;
+			case 2:
+			document.getElementById("attR2").setAttribute("value", "2");
+			document.getElementById("attR2").innerHTML = "Radio Waves";
+			break;
+			case 3:
+			document.getElementById("attR2").innerHTML = "Attack for Round #3";
+		}
+	}
+	if(warrType == 4){
+		switch(attacks[0]){
+			case 0:
+			document.getElementById("attR0").setAttribute("value", "0");
+			document.getElementById("attR0").innerHTML = "Rainbowshit";
+			break;
+			case 1:
+			document.getElementById("attR0").setAttribute("value", "1");
+			document.getElementById("attR0").innerHTML = "Candypuke";
+			break;
+			case 2:
+			document.getElementById("attR0").setAttribute("value", "2");
+			document.getElementById("attR0").innerHTML = "Cornlove";
+			break;
+			case 3:
+			document.getElementById("attR0").innerHTML = "Attack for Round #1";
+		}
+		switch(attacks[1]){
+			case 0:
+			document.getElementById("attR1").setAttribute("value", "0");
+			document.getElementById("attR1").innerHTML = "Rainbowshit";
+			break;
+			case 1:
+			document.getElementById("attR1").setAttribute("value", "1");
+			document.getElementById("attR1").innerHTML = "Candypuke";
+			break;
+			case 2:
+			document.getElementById("attR1").setAttribute("value", "2");
+			document.getElementById("attR1").innerHTML = "Cornlove";
+			break;
+			case 3:
+			document.getElementById("attR1").innerHTML = "Attack for Round #2";
+		}
+		switch(attacks[2]){
+			case 0:
+			document.getElementById("attR2").setAttribute("value", "0");
+			document.getElementById("attR2").innerHTML = "Rainbowshit";
+			break;
+			case 1:
+			document.getElementById("attR2").setAttribute("value", "1");
+			document.getElementById("attR2").innerHTML = "Candypuke";
+			break;
+			case 2:
+			document.getElementById("attR2").setAttribute("value", "2");
+			document.getElementById("attR2").innerHTML = "Cornlove";
+			break;
+			case 3:
+			document.getElementById("attR2").innerHTML = "Attack for Round #3";
+		}
+	}
+}
+
+function changeAvatar(avatar){
+	if(avatar == 0){
+		document.getElementById("avatarImage").src = "../Images/avatar_dragon.svg";
+	}else if(avatar == 1){
+		document.getElementById("avatarImage").src = "../Images/avatar_hackerman.svg";
+	}else if(avatar == 2){
+		document.getElementById("avatarImage").src = "../Images/avatar_marvin.svg";
+	}else if(avatar == 3){
+		document.getElementById("avatarImage").src = "../Images/avatar_tesla.svg";
+	}else if(avatar == 4){
+		document.getElementById("avatarImage").src = "../Images/avatar_unicorn.svg";
+	}else{
+		console.log("There has been an error!");
+	}
+}
+
+/*I'm writing this so that function changeAvatar is safe and protected and doesn't feel lonely. Also I'm using multi line comment because I have mild ocd and this look prettier.*/
